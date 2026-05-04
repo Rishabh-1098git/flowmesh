@@ -7,7 +7,7 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-func EnqueueJob(client *redis.Client, jobID int, pipelineID int) error {
+func EnqueueJob(client *redis.Client, jobID int) error {
 	ctx := context.Background()
 	err := client.LPush(ctx, "jobs_queue", jobID).Err()
 	return err
